@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id         String   @id @default(uuid())
+  username   String   @unique
+  email      String   @unique
+  telefono   String?
+  ciudad     String?
+  subdominio String   @unique
+  licencia   Licencia @relation(fields: [licenciaId], references: [id])
+  licenciaId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Licencia {
+  id          String    @id @default(uuid())
+  tipo        String // Aquí irá el tipo de licencia (device, basic, premium, etc)
+  fechaInicio DateTime
+  fechaFin    DateTime
+  activa      Boolean   @default(true)
+  codigo      String    @unique
+  usuarios    Usuario[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Config {
+  id     Int     @id @default(autoincrement())
+  dark   Boolean @default(false)
+  userId String  @unique
+}
