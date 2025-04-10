@@ -1098,6 +1098,10 @@ export namespace Prisma {
     telefono: string | null
     ciudad: string | null
     subdominio: string | null
+    codigo: string | null
+    activo: boolean | null
+    fechaInicio: Date | null
+    fechaFin: Date | null
     licenciaId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1110,6 +1114,10 @@ export namespace Prisma {
     telefono: string | null
     ciudad: string | null
     subdominio: string | null
+    codigo: string | null
+    activo: boolean | null
+    fechaInicio: Date | null
+    fechaFin: Date | null
     licenciaId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1122,6 +1130,10 @@ export namespace Prisma {
     telefono: number
     ciudad: number
     subdominio: number
+    codigo: number
+    activo: number
+    fechaInicio: number
+    fechaFin: number
     licenciaId: number
     createdAt: number
     updatedAt: number
@@ -1136,6 +1148,10 @@ export namespace Prisma {
     telefono?: true
     ciudad?: true
     subdominio?: true
+    codigo?: true
+    activo?: true
+    fechaInicio?: true
+    fechaFin?: true
     licenciaId?: true
     createdAt?: true
     updatedAt?: true
@@ -1148,6 +1164,10 @@ export namespace Prisma {
     telefono?: true
     ciudad?: true
     subdominio?: true
+    codigo?: true
+    activo?: true
+    fechaInicio?: true
+    fechaFin?: true
     licenciaId?: true
     createdAt?: true
     updatedAt?: true
@@ -1160,6 +1180,10 @@ export namespace Prisma {
     telefono?: true
     ciudad?: true
     subdominio?: true
+    codigo?: true
+    activo?: true
+    fechaInicio?: true
+    fechaFin?: true
     licenciaId?: true
     createdAt?: true
     updatedAt?: true
@@ -1245,6 +1269,10 @@ export namespace Prisma {
     telefono: string | null
     ciudad: string | null
     subdominio: string
+    codigo: string
+    activo: boolean
+    fechaInicio: Date
+    fechaFin: Date
     licenciaId: string
     createdAt: Date
     updatedAt: Date
@@ -1274,6 +1302,10 @@ export namespace Prisma {
     telefono?: boolean
     ciudad?: boolean
     subdominio?: boolean
+    codigo?: boolean
+    activo?: boolean
+    fechaInicio?: boolean
+    fechaFin?: boolean
     licenciaId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1287,6 +1319,10 @@ export namespace Prisma {
     telefono?: boolean
     ciudad?: boolean
     subdominio?: boolean
+    codigo?: boolean
+    activo?: boolean
+    fechaInicio?: boolean
+    fechaFin?: boolean
     licenciaId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1300,6 +1336,10 @@ export namespace Prisma {
     telefono?: boolean
     ciudad?: boolean
     subdominio?: boolean
+    codigo?: boolean
+    activo?: boolean
+    fechaInicio?: boolean
+    fechaFin?: boolean
     licenciaId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1313,12 +1353,16 @@ export namespace Prisma {
     telefono?: boolean
     ciudad?: boolean
     subdominio?: boolean
+    codigo?: boolean
+    activo?: boolean
+    fechaInicio?: boolean
+    fechaFin?: boolean
     licenciaId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "email" | "telefono" | "ciudad" | "subdominio" | "licenciaId" | "createdAt" | "updatedAt", ExtArgs["result"]["usuario"]>
+  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "email" | "telefono" | "ciudad" | "subdominio" | "codigo" | "activo" | "fechaInicio" | "fechaFin" | "licenciaId" | "createdAt" | "updatedAt", ExtArgs["result"]["usuario"]>
   export type UsuarioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     licencia?: boolean | LicenciaDefaultArgs<ExtArgs>
   }
@@ -1341,6 +1385,10 @@ export namespace Prisma {
       telefono: string | null
       ciudad: string | null
       subdominio: string
+      codigo: string
+      activo: boolean
+      fechaInicio: Date
+      fechaFin: Date
       licenciaId: string
       createdAt: Date
       updatedAt: Date
@@ -1774,6 +1822,10 @@ export namespace Prisma {
     readonly telefono: FieldRef<"Usuario", 'String'>
     readonly ciudad: FieldRef<"Usuario", 'String'>
     readonly subdominio: FieldRef<"Usuario", 'String'>
+    readonly codigo: FieldRef<"Usuario", 'String'>
+    readonly activo: FieldRef<"Usuario", 'Boolean'>
+    readonly fechaInicio: FieldRef<"Usuario", 'DateTime'>
+    readonly fechaFin: FieldRef<"Usuario", 'DateTime'>
     readonly licenciaId: FieldRef<"Usuario", 'String'>
     readonly createdAt: FieldRef<"Usuario", 'DateTime'>
     readonly updatedAt: FieldRef<"Usuario", 'DateTime'>
@@ -2204,10 +2256,6 @@ export namespace Prisma {
   export type LicenciaMinAggregateOutputType = {
     id: string | null
     tipo: string | null
-    fechaInicio: Date | null
-    fechaFin: Date | null
-    activa: boolean | null
-    codigo: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2215,10 +2263,6 @@ export namespace Prisma {
   export type LicenciaMaxAggregateOutputType = {
     id: string | null
     tipo: string | null
-    fechaInicio: Date | null
-    fechaFin: Date | null
-    activa: boolean | null
-    codigo: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2226,10 +2270,6 @@ export namespace Prisma {
   export type LicenciaCountAggregateOutputType = {
     id: number
     tipo: number
-    fechaInicio: number
-    fechaFin: number
-    activa: number
-    codigo: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2239,10 +2279,6 @@ export namespace Prisma {
   export type LicenciaMinAggregateInputType = {
     id?: true
     tipo?: true
-    fechaInicio?: true
-    fechaFin?: true
-    activa?: true
-    codigo?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2250,10 +2286,6 @@ export namespace Prisma {
   export type LicenciaMaxAggregateInputType = {
     id?: true
     tipo?: true
-    fechaInicio?: true
-    fechaFin?: true
-    activa?: true
-    codigo?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2261,10 +2293,6 @@ export namespace Prisma {
   export type LicenciaCountAggregateInputType = {
     id?: true
     tipo?: true
-    fechaInicio?: true
-    fechaFin?: true
-    activa?: true
-    codigo?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2345,10 +2373,6 @@ export namespace Prisma {
   export type LicenciaGroupByOutputType = {
     id: string
     tipo: string
-    fechaInicio: Date
-    fechaFin: Date
-    activa: boolean
-    codigo: string
     createdAt: Date
     updatedAt: Date
     _count: LicenciaCountAggregateOutputType | null
@@ -2373,10 +2397,6 @@ export namespace Prisma {
   export type LicenciaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     tipo?: boolean
-    fechaInicio?: boolean
-    fechaFin?: boolean
-    activa?: boolean
-    codigo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     usuarios?: boolean | Licencia$usuariosArgs<ExtArgs>
@@ -2386,10 +2406,6 @@ export namespace Prisma {
   export type LicenciaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     tipo?: boolean
-    fechaInicio?: boolean
-    fechaFin?: boolean
-    activa?: boolean
-    codigo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["licencia"]>
@@ -2397,10 +2413,6 @@ export namespace Prisma {
   export type LicenciaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     tipo?: boolean
-    fechaInicio?: boolean
-    fechaFin?: boolean
-    activa?: boolean
-    codigo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["licencia"]>
@@ -2408,15 +2420,11 @@ export namespace Prisma {
   export type LicenciaSelectScalar = {
     id?: boolean
     tipo?: boolean
-    fechaInicio?: boolean
-    fechaFin?: boolean
-    activa?: boolean
-    codigo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type LicenciaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tipo" | "fechaInicio" | "fechaFin" | "activa" | "codigo" | "createdAt" | "updatedAt", ExtArgs["result"]["licencia"]>
+  export type LicenciaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tipo" | "createdAt" | "updatedAt", ExtArgs["result"]["licencia"]>
   export type LicenciaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     usuarios?: boolean | Licencia$usuariosArgs<ExtArgs>
     _count?: boolean | LicenciaCountOutputTypeDefaultArgs<ExtArgs>
@@ -2432,10 +2440,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       tipo: string
-      fechaInicio: Date
-      fechaFin: Date
-      activa: boolean
-      codigo: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["licencia"]>
@@ -2864,10 +2868,6 @@ export namespace Prisma {
   interface LicenciaFieldRefs {
     readonly id: FieldRef<"Licencia", 'String'>
     readonly tipo: FieldRef<"Licencia", 'String'>
-    readonly fechaInicio: FieldRef<"Licencia", 'DateTime'>
-    readonly fechaFin: FieldRef<"Licencia", 'DateTime'>
-    readonly activa: FieldRef<"Licencia", 'Boolean'>
-    readonly codigo: FieldRef<"Licencia", 'String'>
     readonly createdAt: FieldRef<"Licencia", 'DateTime'>
     readonly updatedAt: FieldRef<"Licencia", 'DateTime'>
   }
@@ -3306,28 +3306,18 @@ export namespace Prisma {
 
   export type AggregateConfig = {
     _count: ConfigCountAggregateOutputType | null
-    _avg: ConfigAvgAggregateOutputType | null
-    _sum: ConfigSumAggregateOutputType | null
     _min: ConfigMinAggregateOutputType | null
     _max: ConfigMaxAggregateOutputType | null
   }
 
-  export type ConfigAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type ConfigSumAggregateOutputType = {
-    id: number | null
-  }
-
   export type ConfigMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     dark: boolean | null
     userId: string | null
   }
 
   export type ConfigMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     dark: boolean | null
     userId: string | null
   }
@@ -3339,14 +3329,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type ConfigAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type ConfigSumAggregateInputType = {
-    id?: true
-  }
 
   export type ConfigMinAggregateInputType = {
     id?: true
@@ -3405,18 +3387,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: ConfigAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ConfigSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: ConfigMinAggregateInputType
@@ -3447,19 +3417,15 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ConfigCountAggregateInputType | true
-    _avg?: ConfigAvgAggregateInputType
-    _sum?: ConfigSumAggregateInputType
     _min?: ConfigMinAggregateInputType
     _max?: ConfigMaxAggregateInputType
   }
 
   export type ConfigGroupByOutputType = {
-    id: number
+    id: string
     dark: boolean
     userId: string
     _count: ConfigCountAggregateOutputType | null
-    _avg: ConfigAvgAggregateOutputType | null
-    _sum: ConfigSumAggregateOutputType | null
     _min: ConfigMinAggregateOutputType | null
     _max: ConfigMaxAggregateOutputType | null
   }
@@ -3508,7 +3474,7 @@ export namespace Prisma {
     name: "Config"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       dark: boolean
       userId: string
     }, ExtArgs["result"]["config"]>
@@ -3934,7 +3900,7 @@ export namespace Prisma {
    * Fields of the Config model
    */
   interface ConfigFieldRefs {
-    readonly id: FieldRef<"Config", 'Int'>
+    readonly id: FieldRef<"Config", 'String'>
     readonly dark: FieldRef<"Config", 'Boolean'>
     readonly userId: FieldRef<"Config", 'String'>
   }
@@ -4324,6 +4290,10 @@ export namespace Prisma {
     telefono: 'telefono',
     ciudad: 'ciudad',
     subdominio: 'subdominio',
+    codigo: 'codigo',
+    activo: 'activo',
+    fechaInicio: 'fechaInicio',
+    fechaFin: 'fechaFin',
     licenciaId: 'licenciaId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -4335,10 +4305,6 @@ export namespace Prisma {
   export const LicenciaScalarFieldEnum: {
     id: 'id',
     tipo: 'tipo',
-    fechaInicio: 'fechaInicio',
-    fechaFin: 'fechaFin',
-    activa: 'activa',
-    codigo: 'codigo',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -4399,6 +4365,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -4413,13 +4386,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -4430,20 +4396,6 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -4460,6 +4412,10 @@ export namespace Prisma {
     telefono?: StringNullableFilter<"Usuario"> | string | null
     ciudad?: StringNullableFilter<"Usuario"> | string | null
     subdominio?: StringFilter<"Usuario"> | string
+    codigo?: StringFilter<"Usuario"> | string
+    activo?: BoolFilter<"Usuario"> | boolean
+    fechaInicio?: DateTimeFilter<"Usuario"> | Date | string
+    fechaFin?: DateTimeFilter<"Usuario"> | Date | string
     licenciaId?: StringFilter<"Usuario"> | string
     createdAt?: DateTimeFilter<"Usuario"> | Date | string
     updatedAt?: DateTimeFilter<"Usuario"> | Date | string
@@ -4473,6 +4429,10 @@ export namespace Prisma {
     telefono?: SortOrderInput | SortOrder
     ciudad?: SortOrderInput | SortOrder
     subdominio?: SortOrder
+    codigo?: SortOrder
+    activo?: SortOrder
+    fechaInicio?: SortOrder
+    fechaFin?: SortOrder
     licenciaId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -4484,16 +4444,20 @@ export namespace Prisma {
     username?: string
     email?: string
     subdominio?: string
+    codigo?: string
     AND?: UsuarioWhereInput | UsuarioWhereInput[]
     OR?: UsuarioWhereInput[]
     NOT?: UsuarioWhereInput | UsuarioWhereInput[]
     telefono?: StringNullableFilter<"Usuario"> | string | null
     ciudad?: StringNullableFilter<"Usuario"> | string | null
+    activo?: BoolFilter<"Usuario"> | boolean
+    fechaInicio?: DateTimeFilter<"Usuario"> | Date | string
+    fechaFin?: DateTimeFilter<"Usuario"> | Date | string
     licenciaId?: StringFilter<"Usuario"> | string
     createdAt?: DateTimeFilter<"Usuario"> | Date | string
     updatedAt?: DateTimeFilter<"Usuario"> | Date | string
     licencia?: XOR<LicenciaScalarRelationFilter, LicenciaWhereInput>
-  }, "id" | "username" | "email" | "subdominio">
+  }, "id" | "username" | "email" | "subdominio" | "codigo">
 
   export type UsuarioOrderByWithAggregationInput = {
     id?: SortOrder
@@ -4502,6 +4466,10 @@ export namespace Prisma {
     telefono?: SortOrderInput | SortOrder
     ciudad?: SortOrderInput | SortOrder
     subdominio?: SortOrder
+    codigo?: SortOrder
+    activo?: SortOrder
+    fechaInicio?: SortOrder
+    fechaFin?: SortOrder
     licenciaId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -4520,6 +4488,10 @@ export namespace Prisma {
     telefono?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
     ciudad?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
     subdominio?: StringWithAggregatesFilter<"Usuario"> | string
+    codigo?: StringWithAggregatesFilter<"Usuario"> | string
+    activo?: BoolWithAggregatesFilter<"Usuario"> | boolean
+    fechaInicio?: DateTimeWithAggregatesFilter<"Usuario"> | Date | string
+    fechaFin?: DateTimeWithAggregatesFilter<"Usuario"> | Date | string
     licenciaId?: StringWithAggregatesFilter<"Usuario"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Usuario"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Usuario"> | Date | string
@@ -4531,10 +4503,6 @@ export namespace Prisma {
     NOT?: LicenciaWhereInput | LicenciaWhereInput[]
     id?: StringFilter<"Licencia"> | string
     tipo?: StringFilter<"Licencia"> | string
-    fechaInicio?: DateTimeFilter<"Licencia"> | Date | string
-    fechaFin?: DateTimeFilter<"Licencia"> | Date | string
-    activa?: BoolFilter<"Licencia"> | boolean
-    codigo?: StringFilter<"Licencia"> | string
     createdAt?: DateTimeFilter<"Licencia"> | Date | string
     updatedAt?: DateTimeFilter<"Licencia"> | Date | string
     usuarios?: UsuarioListRelationFilter
@@ -4543,10 +4511,6 @@ export namespace Prisma {
   export type LicenciaOrderByWithRelationInput = {
     id?: SortOrder
     tipo?: SortOrder
-    fechaInicio?: SortOrder
-    fechaFin?: SortOrder
-    activa?: SortOrder
-    codigo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     usuarios?: UsuarioOrderByRelationAggregateInput
@@ -4554,26 +4518,18 @@ export namespace Prisma {
 
   export type LicenciaWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    codigo?: string
     AND?: LicenciaWhereInput | LicenciaWhereInput[]
     OR?: LicenciaWhereInput[]
     NOT?: LicenciaWhereInput | LicenciaWhereInput[]
     tipo?: StringFilter<"Licencia"> | string
-    fechaInicio?: DateTimeFilter<"Licencia"> | Date | string
-    fechaFin?: DateTimeFilter<"Licencia"> | Date | string
-    activa?: BoolFilter<"Licencia"> | boolean
     createdAt?: DateTimeFilter<"Licencia"> | Date | string
     updatedAt?: DateTimeFilter<"Licencia"> | Date | string
     usuarios?: UsuarioListRelationFilter
-  }, "id" | "codigo">
+  }, "id">
 
   export type LicenciaOrderByWithAggregationInput = {
     id?: SortOrder
     tipo?: SortOrder
-    fechaInicio?: SortOrder
-    fechaFin?: SortOrder
-    activa?: SortOrder
-    codigo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: LicenciaCountOrderByAggregateInput
@@ -4587,10 +4543,6 @@ export namespace Prisma {
     NOT?: LicenciaScalarWhereWithAggregatesInput | LicenciaScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Licencia"> | string
     tipo?: StringWithAggregatesFilter<"Licencia"> | string
-    fechaInicio?: DateTimeWithAggregatesFilter<"Licencia"> | Date | string
-    fechaFin?: DateTimeWithAggregatesFilter<"Licencia"> | Date | string
-    activa?: BoolWithAggregatesFilter<"Licencia"> | boolean
-    codigo?: StringWithAggregatesFilter<"Licencia"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Licencia"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Licencia"> | Date | string
   }
@@ -4599,7 +4551,7 @@ export namespace Prisma {
     AND?: ConfigWhereInput | ConfigWhereInput[]
     OR?: ConfigWhereInput[]
     NOT?: ConfigWhereInput | ConfigWhereInput[]
-    id?: IntFilter<"Config"> | number
+    id?: StringFilter<"Config"> | string
     dark?: BoolFilter<"Config"> | boolean
     userId?: StringFilter<"Config"> | string
   }
@@ -4611,7 +4563,7 @@ export namespace Prisma {
   }
 
   export type ConfigWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     userId?: string
     AND?: ConfigWhereInput | ConfigWhereInput[]
     OR?: ConfigWhereInput[]
@@ -4624,17 +4576,15 @@ export namespace Prisma {
     dark?: SortOrder
     userId?: SortOrder
     _count?: ConfigCountOrderByAggregateInput
-    _avg?: ConfigAvgOrderByAggregateInput
     _max?: ConfigMaxOrderByAggregateInput
     _min?: ConfigMinOrderByAggregateInput
-    _sum?: ConfigSumOrderByAggregateInput
   }
 
   export type ConfigScalarWhereWithAggregatesInput = {
     AND?: ConfigScalarWhereWithAggregatesInput | ConfigScalarWhereWithAggregatesInput[]
     OR?: ConfigScalarWhereWithAggregatesInput[]
     NOT?: ConfigScalarWhereWithAggregatesInput | ConfigScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Config"> | number
+    id?: StringWithAggregatesFilter<"Config"> | string
     dark?: BoolWithAggregatesFilter<"Config"> | boolean
     userId?: StringWithAggregatesFilter<"Config"> | string
   }
@@ -4646,6 +4596,10 @@ export namespace Prisma {
     telefono?: string | null
     ciudad?: string | null
     subdominio: string
+    codigo: string
+    activo?: boolean
+    fechaInicio: Date | string
+    fechaFin: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
     licencia: LicenciaCreateNestedOneWithoutUsuariosInput
@@ -4658,6 +4612,10 @@ export namespace Prisma {
     telefono?: string | null
     ciudad?: string | null
     subdominio: string
+    codigo: string
+    activo?: boolean
+    fechaInicio: Date | string
+    fechaFin: Date | string
     licenciaId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -4670,6 +4628,10 @@ export namespace Prisma {
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     ciudad?: NullableStringFieldUpdateOperationsInput | string | null
     subdominio?: StringFieldUpdateOperationsInput | string
+    codigo?: StringFieldUpdateOperationsInput | string
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     licencia?: LicenciaUpdateOneRequiredWithoutUsuariosNestedInput
@@ -4682,6 +4644,10 @@ export namespace Prisma {
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     ciudad?: NullableStringFieldUpdateOperationsInput | string | null
     subdominio?: StringFieldUpdateOperationsInput | string
+    codigo?: StringFieldUpdateOperationsInput | string
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     licenciaId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4694,6 +4660,10 @@ export namespace Prisma {
     telefono?: string | null
     ciudad?: string | null
     subdominio: string
+    codigo: string
+    activo?: boolean
+    fechaInicio: Date | string
+    fechaFin: Date | string
     licenciaId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -4706,6 +4676,10 @@ export namespace Prisma {
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     ciudad?: NullableStringFieldUpdateOperationsInput | string | null
     subdominio?: StringFieldUpdateOperationsInput | string
+    codigo?: StringFieldUpdateOperationsInput | string
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4717,6 +4691,10 @@ export namespace Prisma {
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     ciudad?: NullableStringFieldUpdateOperationsInput | string | null
     subdominio?: StringFieldUpdateOperationsInput | string
+    codigo?: StringFieldUpdateOperationsInput | string
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     licenciaId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4725,10 +4703,6 @@ export namespace Prisma {
   export type LicenciaCreateInput = {
     id?: string
     tipo: string
-    fechaInicio: Date | string
-    fechaFin: Date | string
-    activa?: boolean
-    codigo: string
     createdAt?: Date | string
     updatedAt?: Date | string
     usuarios?: UsuarioCreateNestedManyWithoutLicenciaInput
@@ -4737,10 +4711,6 @@ export namespace Prisma {
   export type LicenciaUncheckedCreateInput = {
     id?: string
     tipo: string
-    fechaInicio: Date | string
-    fechaFin: Date | string
-    activa?: boolean
-    codigo: string
     createdAt?: Date | string
     updatedAt?: Date | string
     usuarios?: UsuarioUncheckedCreateNestedManyWithoutLicenciaInput
@@ -4749,10 +4719,6 @@ export namespace Prisma {
   export type LicenciaUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
-    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
-    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
-    activa?: BoolFieldUpdateOperationsInput | boolean
-    codigo?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     usuarios?: UsuarioUpdateManyWithoutLicenciaNestedInput
@@ -4761,10 +4727,6 @@ export namespace Prisma {
   export type LicenciaUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
-    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
-    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
-    activa?: BoolFieldUpdateOperationsInput | boolean
-    codigo?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     usuarios?: UsuarioUncheckedUpdateManyWithoutLicenciaNestedInput
@@ -4773,10 +4735,6 @@ export namespace Prisma {
   export type LicenciaCreateManyInput = {
     id?: string
     tipo: string
-    fechaInicio: Date | string
-    fechaFin: Date | string
-    activa?: boolean
-    codigo: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4784,10 +4742,6 @@ export namespace Prisma {
   export type LicenciaUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
-    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
-    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
-    activa?: BoolFieldUpdateOperationsInput | boolean
-    codigo?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4795,49 +4749,48 @@ export namespace Prisma {
   export type LicenciaUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
-    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
-    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
-    activa?: BoolFieldUpdateOperationsInput | boolean
-    codigo?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ConfigCreateInput = {
+    id?: string
     dark?: boolean
     userId: string
   }
 
   export type ConfigUncheckedCreateInput = {
-    id?: number
+    id?: string
     dark?: boolean
     userId: string
   }
 
   export type ConfigUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     dark?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ConfigUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     dark?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ConfigCreateManyInput = {
-    id?: number
+    id?: string
     dark?: boolean
     userId: string
   }
 
   export type ConfigUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     dark?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ConfigUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     dark?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -4872,6 +4825,11 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -4900,6 +4858,10 @@ export namespace Prisma {
     telefono?: SortOrder
     ciudad?: SortOrder
     subdominio?: SortOrder
+    codigo?: SortOrder
+    activo?: SortOrder
+    fechaInicio?: SortOrder
+    fechaFin?: SortOrder
     licenciaId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -4912,6 +4874,10 @@ export namespace Prisma {
     telefono?: SortOrder
     ciudad?: SortOrder
     subdominio?: SortOrder
+    codigo?: SortOrder
+    activo?: SortOrder
+    fechaInicio?: SortOrder
+    fechaFin?: SortOrder
     licenciaId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -4924,6 +4890,10 @@ export namespace Prisma {
     telefono?: SortOrder
     ciudad?: SortOrder
     subdominio?: SortOrder
+    codigo?: SortOrder
+    activo?: SortOrder
+    fechaInicio?: SortOrder
+    fechaFin?: SortOrder
     licenciaId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -4965,6 +4935,14 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -4977,11 +4955,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type UsuarioListRelationFilter = {
@@ -4997,10 +4970,6 @@ export namespace Prisma {
   export type LicenciaCountOrderByAggregateInput = {
     id?: SortOrder
     tipo?: SortOrder
-    fechaInicio?: SortOrder
-    fechaFin?: SortOrder
-    activa?: SortOrder
-    codigo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5008,10 +4977,6 @@ export namespace Prisma {
   export type LicenciaMaxOrderByAggregateInput = {
     id?: SortOrder
     tipo?: SortOrder
-    fechaInicio?: SortOrder
-    fechaFin?: SortOrder
-    activa?: SortOrder
-    codigo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5019,41 +4984,14 @@ export namespace Prisma {
   export type LicenciaMinOrderByAggregateInput = {
     id?: SortOrder
     tipo?: SortOrder
-    fechaInicio?: SortOrder
-    fechaFin?: SortOrder
-    activa?: SortOrder
-    codigo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type ConfigCountOrderByAggregateInput = {
     id?: SortOrder
     dark?: SortOrder
     userId?: SortOrder
-  }
-
-  export type ConfigAvgOrderByAggregateInput = {
-    id?: SortOrder
   }
 
   export type ConfigMaxOrderByAggregateInput = {
@@ -5068,26 +5006,6 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
-  export type ConfigSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
   export type LicenciaCreateNestedOneWithoutUsuariosInput = {
     create?: XOR<LicenciaCreateWithoutUsuariosInput, LicenciaUncheckedCreateWithoutUsuariosInput>
     connectOrCreate?: LicenciaCreateOrConnectWithoutUsuariosInput
@@ -5100,6 +5018,10 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -5126,10 +5048,6 @@ export namespace Prisma {
     connectOrCreate?: UsuarioCreateOrConnectWithoutLicenciaInput | UsuarioCreateOrConnectWithoutLicenciaInput[]
     createMany?: UsuarioCreateManyLicenciaInputEnvelope
     connect?: UsuarioWhereUniqueInput | UsuarioWhereUniqueInput[]
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type UsuarioUpdateManyWithoutLicenciaNestedInput = {
@@ -5160,14 +5078,6 @@ export namespace Prisma {
     deleteMany?: UsuarioScalarWhereInput | UsuarioScalarWhereInput[]
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -5194,6 +5104,11 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -5263,6 +5178,14 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -5277,53 +5200,9 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type LicenciaCreateWithoutUsuariosInput = {
     id?: string
     tipo: string
-    fechaInicio: Date | string
-    fechaFin: Date | string
-    activa?: boolean
-    codigo: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5331,10 +5210,6 @@ export namespace Prisma {
   export type LicenciaUncheckedCreateWithoutUsuariosInput = {
     id?: string
     tipo: string
-    fechaInicio: Date | string
-    fechaFin: Date | string
-    activa?: boolean
-    codigo: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5358,10 +5233,6 @@ export namespace Prisma {
   export type LicenciaUpdateWithoutUsuariosInput = {
     id?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
-    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
-    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
-    activa?: BoolFieldUpdateOperationsInput | boolean
-    codigo?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5369,10 +5240,6 @@ export namespace Prisma {
   export type LicenciaUncheckedUpdateWithoutUsuariosInput = {
     id?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
-    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
-    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
-    activa?: BoolFieldUpdateOperationsInput | boolean
-    codigo?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5384,6 +5251,10 @@ export namespace Prisma {
     telefono?: string | null
     ciudad?: string | null
     subdominio: string
+    codigo: string
+    activo?: boolean
+    fechaInicio: Date | string
+    fechaFin: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5395,6 +5266,10 @@ export namespace Prisma {
     telefono?: string | null
     ciudad?: string | null
     subdominio: string
+    codigo: string
+    activo?: boolean
+    fechaInicio: Date | string
+    fechaFin: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5435,6 +5310,10 @@ export namespace Prisma {
     telefono?: StringNullableFilter<"Usuario"> | string | null
     ciudad?: StringNullableFilter<"Usuario"> | string | null
     subdominio?: StringFilter<"Usuario"> | string
+    codigo?: StringFilter<"Usuario"> | string
+    activo?: BoolFilter<"Usuario"> | boolean
+    fechaInicio?: DateTimeFilter<"Usuario"> | Date | string
+    fechaFin?: DateTimeFilter<"Usuario"> | Date | string
     licenciaId?: StringFilter<"Usuario"> | string
     createdAt?: DateTimeFilter<"Usuario"> | Date | string
     updatedAt?: DateTimeFilter<"Usuario"> | Date | string
@@ -5447,6 +5326,10 @@ export namespace Prisma {
     telefono?: string | null
     ciudad?: string | null
     subdominio: string
+    codigo: string
+    activo?: boolean
+    fechaInicio: Date | string
+    fechaFin: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5458,6 +5341,10 @@ export namespace Prisma {
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     ciudad?: NullableStringFieldUpdateOperationsInput | string | null
     subdominio?: StringFieldUpdateOperationsInput | string
+    codigo?: StringFieldUpdateOperationsInput | string
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5469,6 +5356,10 @@ export namespace Prisma {
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     ciudad?: NullableStringFieldUpdateOperationsInput | string | null
     subdominio?: StringFieldUpdateOperationsInput | string
+    codigo?: StringFieldUpdateOperationsInput | string
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5480,6 +5371,10 @@ export namespace Prisma {
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     ciudad?: NullableStringFieldUpdateOperationsInput | string | null
     subdominio?: StringFieldUpdateOperationsInput | string
+    codigo?: StringFieldUpdateOperationsInput | string
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

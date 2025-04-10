@@ -24,6 +24,8 @@ export default function EditarUsuarioPage({ params }: { params: PageParams }) {
     ciudad: '',
     subdominio: '',
     licenciaId: '',
+    fechaInicio: '',
+    fechaFin: '',
   });
   
   const [loading, setLoading] = useState(true);
@@ -61,6 +63,8 @@ export default function EditarUsuarioPage({ params }: { params: PageParams }) {
         ciudad: data.ciudad || '',
         subdominio: data.subdominio,
         licenciaId: data.licenciaId,
+        fechaInicio: data.fechaInicio ? new Date(data.fechaInicio).toISOString().split('T')[0] : '',
+        fechaFin: data.fechaFin ? new Date(data.fechaFin).toISOString().split('T')[0] : '',
       });
       setLoading(false);
     } catch (error) {
@@ -226,10 +230,42 @@ export default function EditarUsuarioPage({ params }: { params: PageParams }) {
                 <option value="">Seleccionar licencia</option>
                 {licencias.map((licencia: any) => (
                   <option key={licencia.id} value={licencia.id}>
-                    {licencia.tipo} - {new Date(licencia.fechaInicio).toLocaleDateString()} a {new Date(licencia.fechaFin).toLocaleDateString()}
+                    {licencia.tipo}
                   </option>
                 ))}
               </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">Fecha de inicio</label>
+              <input
+                type="date"
+                name="fechaInicio"
+                value={formData.fechaInicio}
+                onChange={handleChange}
+                required
+                className={`w-full px-3 py-2 border rounded-md ${
+                  theme === 'dark' 
+                    ? 'bg-gray-800 border-gray-700 text-white' 
+                    : 'bg-white border-gray-300 text-gray-900'
+                }`}
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">Fecha de fin</label>
+              <input
+                type="date"
+                name="fechaFin"
+                value={formData.fechaFin}
+                onChange={handleChange}
+                required
+                className={`w-full px-3 py-2 border rounded-md ${
+                  theme === 'dark' 
+                    ? 'bg-gray-800 border-gray-700 text-white' 
+                    : 'bg-white border-gray-300 text-gray-900'
+                }`}
+              />
             </div>
 
             <div className="flex justify-end space-x-4">

@@ -1,10 +1,29 @@
 import { prisma } from '@/lib/prisma';
 import { Usuario } from '@/types';
 
+function generateRandomCode(): string {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const length = Math.floor(Math.random() * 2) + 6; // 6 o 7 caracteres
+  let code = '';
+  for (let i = 0; i < length; i++) {
+    code += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return code;
+}
+
 export const usuarioService = {
-  async create(usuarioData: Omit<Usuario, 'id' | 'createdAt' | 'updatedAt' | 'licencia'>) {
+  async create(data: Omit<Usuario, 'id' | 'createdAt' | 'updatedAt' | 'licencia' | 'codigo' | 'activo'>) {
+    const codigo = generateRandomCode();
+    
     return prisma.usuario.create({
-      data: usuarioData,
+      data: {
+        ...data,
+        codigo,
+        activo: true,
+      },
+      include: {
+        licencia: true,
+      },
     });
   },
 
@@ -12,6 +31,9 @@ export const usuarioService = {
     return prisma.usuario.findMany({
       include: {
         licencia: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
       },
     });
   },
@@ -52,10 +74,10 @@ export const usuarioService = {
     });
   },
 
-  async update(id: string, usuarioData: Partial<Omit<Usuario, 'id' | 'createdAt' | 'updatedAt' | 'licencia'>>) {
+  async update(id: string, data: Partial<Omit<Usuario, 'id' | 'createdAt' | 'updatedAt' | 'licencia' | 'codigo'>>) {
     return prisma.usuario.update({
       where: { id },
-      data: usuarioData,
+      data,
       include: {
         licencia: true,
       },
@@ -86,4 +108,33 @@ export const usuarioService = {
     });
     return !!existingUsuario;
   },
+
+  async toggleActive(id: string) {
+    const usuario = await prisma.usuario.findUnique({
+      where: { id },
+    });
+    
+    if (!usuario) {
+      throw new Error('Usuario no encontrado');
+    }
+    
+    return prisma.usuario.update({
+      where: { id },
+      data: {
+        activo: !usuario.activo,
+      },
+      include: {
+        licencia: true,
+      },
+    });
+  },
+
+  async isVigente(id: string) {
+    const usuario = await this.getById(id);
+
+    if (!usuario || !usuario.activo) return false;
+
+    const ahora = new Date();
+    return usuario.fechaInicio <= ahora && usuario.fechaFin >= ahora;
+  }
 }; 

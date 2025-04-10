@@ -21,19 +21,26 @@ export async function POST(request: Request) {
     const body = await request.json();
     
     // Validar campos requeridos
-    if (!body.username || !body.email || !body.subdominio || !body.licenciaId) {
+    if (!body.username || !body.email || !body.subdominio || !body.licenciaId || !body.fechaInicio || !body.fechaFin) {
       return NextResponse.json(
-        { error: 'Los campos username, email, subdominio y licenciaId son obligatorios' },
+        { error: 'Los campos username, email, subdominio, licenciaId, fechaInicio y fechaFin son obligatorios' },
+        { status: 400 }
+      );
+    }
+    
+    // Validar que la fecha de fin sea posterior a la fecha de inicio
+    const fechaInicio = new Date(body.fechaInicio);
+    const fechaFin = new Date(body.fechaFin);
+    
+    if (fechaFin <= fechaInicio) {
+      return NextResponse.json(
+        { error: 'La fecha de fin debe ser posterior a la fecha de inicio' },
         { status: 400 }
       );
     }
     
     // Verificar si el usuario ya existe
-    const exists = await usuarioService.exists(
-      body.username,
-      body.email,
-      body.subdominio
-    );
+    const exists = await usuarioService.exists(body.username, body.email, body.subdominio);
     
     if (exists) {
       return NextResponse.json(
@@ -42,6 +49,7 @@ export async function POST(request: Request) {
       );
     }
     
+    // Crear usuario (el código y el estado activo se generan automáticamente)
     const usuario = await usuarioService.create({
       username: body.username,
       email: body.email,
@@ -49,11 +57,19 @@ export async function POST(request: Request) {
       ciudad: body.ciudad || null,
       subdominio: body.subdominio,
       licenciaId: body.licenciaId,
+      fechaInicio,
+      fechaFin,
     });
     
     return NextResponse.json(usuario, { status: 201 });
   } catch (error) {
     console.error('Error al crear usuario:', error);
+    if (error instanceof Error) {
+      return NextResponse.json(
+        { error: error.message || 'Error al crear usuario' },
+        { status: 500 }
+      );
+    }
     return NextResponse.json(
       { error: 'Error al crear usuario' },
       { status: 500 }

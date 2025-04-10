@@ -5,20 +5,19 @@ export interface Usuario {
   telefono: string | null;
   ciudad: string | null;
   subdominio: string;
+  codigo: string;
+  activo: boolean;
+  fechaInicio: Date;
+  fechaFin: Date;
   licenciaId: string;
   licencia?: Licencia;
   createdAt: Date;
   updatedAt: Date;
-  codigoGenerado?: string;
 }
 
 export interface Licencia {
   id: string;
   tipo: string;
-  fechaInicio: Date;
-  fechaFin: Date;
-  activa: boolean;
-  codigo: string;
   usuarios?: Usuario[];
   createdAt: Date;
   updatedAt: Date;

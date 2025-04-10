@@ -124,6 +124,10 @@ exports.Prisma.UsuarioScalarFieldEnum = {
   telefono: 'telefono',
   ciudad: 'ciudad',
   subdominio: 'subdominio',
+  codigo: 'codigo',
+  activo: 'activo',
+  fechaInicio: 'fechaInicio',
+  fechaFin: 'fechaFin',
   licenciaId: 'licenciaId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -132,10 +136,6 @@ exports.Prisma.UsuarioScalarFieldEnum = {
 exports.Prisma.LicenciaScalarFieldEnum = {
   id: 'id',
   tipo: 'tipo',
-  fechaInicio: 'fechaInicio',
-  fechaFin: 'fechaFin',
-  activa: 'activa',
-  codigo: 'codigo',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

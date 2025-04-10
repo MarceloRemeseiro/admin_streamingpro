@@ -37,18 +37,15 @@ export async function PUT(
     const body = await request.json();
     
     // Validar campos requeridos
-    if (!body.tipo || !body.fechaInicio || !body.fechaFin) {
+    if (!body.tipo) {
       return NextResponse.json(
-        { error: 'Los campos tipo, fechaInicio y fechaFin son obligatorios' },
+        { error: 'El campo tipo es obligatorio' },
         { status: 400 }
       );
     }
     
     const licencia = await licenciaService.update(id, {
-      tipo: body.tipo,
-      fechaInicio: new Date(body.fechaInicio),
-      fechaFin: new Date(body.fechaFin),
-      activa: body.activa,
+      tipo: body.tipo
     });
     
     return NextResponse.json(licencia);

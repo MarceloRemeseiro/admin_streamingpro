@@ -63,6 +63,24 @@ export default function UsuariosPage() {
     }
   };
   
+  const handleToggleActive = async (id: string) => {
+    try {
+      const response = await fetch(`/api/usuarios/${id}/toggle-active`, {
+        method: 'PUT',
+      });
+      
+      if (!response.ok) {
+        throw new Error('Error al cambiar el estado del usuario');
+      }
+      
+      // Actualizar la lista de usuarios
+      fetchUsuarios();
+    } catch (err) {
+      console.error('Error al cambiar el estado:', err);
+      setError('No se pudo cambiar el estado del usuario. Intente nuevamente.');
+    }
+  };
+  
   // Si no está montado, mostrar una versión estática
   if (!mounted) {
     return (
@@ -115,14 +133,15 @@ export default function UsuariosPage() {
               <thead className={theme === "dark" ? "bg-gray-700" : "bg-gray-50"}>
                 <tr>
                   <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Username</th>
-                  <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Código Licencia</th>
+                  <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Código</th>
+                  <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Estado</th>
                   <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Email</th>
                   <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Teléfono</th>
                   <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Ciudad</th>
                   <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Subdominio</th>
                   <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Licencia</th>
-                  <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Fin Licencia</th>
-                  <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Fecha Creación</th>
+                  <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Fecha Inicio</th>
+                  <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Fecha Fin</th>
                   <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Acciones</th>
                 </tr>
               </thead>
@@ -131,7 +150,16 @@ export default function UsuariosPage() {
                   <tr key={usuario.id} className={theme === "dark" ? "bg-gray-800" : "bg-white"}>
                     <td className={`px-6 py-4 whitespace-nowrap text-sm ${theme === "dark" ? "text-gray-100" : "text-gray-800"}`}>{usuario.username}</td>
                     <td className={`px-6 py-4 whitespace-nowrap text-sm font-mono ${theme === "dark" ? "text-blue-400" : "text-blue-600"}`}>
-                      {usuario.licencia?.codigo || "N/A"}
+                      {usuario.codigo || "N/A"}
+                    </td>
+                    <td className={`px-6 py-4 whitespace-nowrap text-sm`}>
+                      <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                        usuario.activo
+                          ? 'bg-green-100 text-green-800'
+                          : 'bg-red-100 text-red-800'
+                      }`}>
+                        {usuario.activo ? 'Activo' : 'Inactivo'}
+                      </span>
                     </td>
                     <td className={`px-6 py-4 whitespace-nowrap text-sm ${theme === "dark" ? "text-gray-100" : "text-gray-800"}`}>{usuario.email}</td>
                     <td className={`px-6 py-4 whitespace-nowrap text-sm ${theme === "dark" ? "text-gray-100" : "text-gray-800"}`}>{usuario.telefono || "-"}</td>
@@ -141,12 +169,14 @@ export default function UsuariosPage() {
                       {usuario.licencia?.tipo || "Sin licencia"}
                     </td>
                     <td className={`px-6 py-4 whitespace-nowrap text-sm ${theme === "dark" ? "text-gray-100" : "text-gray-800"}`}>
-                      {usuario.licencia?.fechaFin 
-                        ? new Date(usuario.licencia.fechaFin).toLocaleDateString() 
+                      {usuario.fechaInicio 
+                        ? new Date(usuario.fechaInicio).toLocaleDateString() 
                         : "-"}
                     </td>
                     <td className={`px-6 py-4 whitespace-nowrap text-sm ${theme === "dark" ? "text-gray-100" : "text-gray-800"}`}>
-                      {new Date(usuario.createdAt).toLocaleDateString()}
+                      {usuario.fechaFin 
+                        ? new Date(usuario.fechaFin).toLocaleDateString() 
+                        : "-"}
                     </td>
                     <td className={`px-6 py-4 whitespace-nowrap text-sm ${theme === "dark" ? "text-gray-100" : "text-gray-800"}`}>
                       <button 
@@ -154,6 +184,12 @@ export default function UsuariosPage() {
                         onClick={() => router.push(`/usuarios/editar/${usuario.id}`)}
                       >
                         Editar
+                      </button>
+                      <button 
+                        className={theme === "dark" ? "text-orange-400 hover:text-orange-300 mr-3" : "text-orange-600 hover:text-orange-900 mr-3"}
+                        onClick={() => handleToggleActive(usuario.id)}
+                      >
+                        {usuario.activo ? 'Desactivar' : 'Activar'}
                       </button>
                       <button 
                         className={theme === "dark" ? "text-red-400 hover:text-red-300" : "text-red-600 hover:text-red-900"}

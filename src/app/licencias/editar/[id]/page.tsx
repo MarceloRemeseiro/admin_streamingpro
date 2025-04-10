@@ -18,9 +18,6 @@ export default function EditarLicenciaPage({ params }: { params: PageParams }) {
   
   const [formData, setFormData] = useState({
     tipo: '',
-    fechaInicio: '',
-    fechaFin: '',
-    activa: true,
   });
   
   const [loading, setLoading] = useState(true);
@@ -40,9 +37,6 @@ export default function EditarLicenciaPage({ params }: { params: PageParams }) {
       const data = await response.json();
       setFormData({
         tipo: data.tipo,
-        fechaInicio: new Date(data.fechaInicio).toISOString().split('T')[0],
-        fechaFin: new Date(data.fechaFin).toISOString().split('T')[0],
-        activa: data.activa,
       });
       setLoading(false);
     } catch (error) {
@@ -53,10 +47,10 @@ export default function EditarLicenciaPage({ params }: { params: PageParams }) {
   };
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+      [name]: value
     }));
   };
   
@@ -128,49 +122,6 @@ export default function EditarLicenciaPage({ params }: { params: PageParams }) {
                     : 'bg-white border-gray-300 text-gray-900'
                 }`}
               />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-1">Fecha Inicio</label>
-              <input
-                type="date"
-                name="fechaInicio"
-                value={formData.fechaInicio}
-                onChange={handleChange}
-                required
-                className={`w-full px-3 py-2 border rounded-md ${
-                  theme === 'dark' 
-                    ? 'bg-gray-800 border-gray-700 text-white' 
-                    : 'bg-white border-gray-300 text-gray-900'
-                }`}
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-1">Fecha Fin</label>
-              <input
-                type="date"
-                name="fechaFin"
-                value={formData.fechaFin}
-                onChange={handleChange}
-                required
-                className={`w-full px-3 py-2 border rounded-md ${
-                  theme === 'dark' 
-                    ? 'bg-gray-800 border-gray-700 text-white' 
-                    : 'bg-white border-gray-300 text-gray-900'
-                }`}
-              />
-            </div>
-
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                name="activa"
-                checked={formData.activa}
-                onChange={handleChange}
-                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-              />
-              <label className="ml-2 block text-sm font-medium">Activa</label>
             </div>
 
             <div className="flex justify-end space-x-4">

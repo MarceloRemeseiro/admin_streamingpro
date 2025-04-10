@@ -113,9 +113,6 @@ export default function LicenciasPage() {
               <thead className={theme === "dark" ? "bg-gray-700" : "bg-gray-50"}>
                 <tr>
                   <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Tipo</th>
-                  <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Fecha Inicio</th>
-                  <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Fecha Fin</th>
-                  <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Estado</th>
                   <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Usuarios</th>
                   <th scope="col" className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>Acciones</th>
                 </tr>
@@ -125,30 +122,9 @@ export default function LicenciasPage() {
                   <tr key={licencia.id} className={theme === "dark" ? "bg-gray-800" : "bg-white"}>
                     <td className={`px-6 py-4 whitespace-nowrap text-sm ${theme === "dark" ? "text-gray-100" : "text-gray-800"}`}>{licencia.tipo}</td>
                     <td className={`px-6 py-4 whitespace-nowrap text-sm ${theme === "dark" ? "text-gray-100" : "text-gray-800"}`}>
-                      {new Date(licencia.fechaInicio).toLocaleDateString()}
-                    </td>
-                    <td className={`px-6 py-4 whitespace-nowrap text-sm ${theme === "dark" ? "text-gray-100" : "text-gray-800"}`}>
-                      {new Date(licencia.fechaFin).toLocaleDateString()}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm">
-                      <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                        licencia.activa
-                          ? theme === "dark" ? 'bg-green-900 text-green-200' : 'bg-green-100 text-green-800'
-                          : theme === "dark" ? 'bg-red-900 text-red-200' : 'bg-red-100 text-red-800'
-                      }`}>
-                        {licencia.activa ? 'Activa' : 'Inactiva'}
-                      </span>
-                    </td>
-                    <td className={`px-6 py-4 whitespace-nowrap text-sm ${theme === "dark" ? "text-gray-100" : "text-gray-800"}`}>
                       {licencia.usuarios?.length || 0}
                     </td>
                     <td className={`px-6 py-4 whitespace-nowrap text-sm ${theme === "dark" ? "text-gray-100" : "text-gray-800"}`}>
-                      <button 
-                        className={theme === "dark" ? "text-blue-400 hover:text-blue-300 mr-3" : "text-blue-600 hover:text-blue-900 mr-3"}
-                        onClick={() => router.push(`/licencias/editar/${licencia.id}`)}
-                      >
-                        Editar
-                      </button>
                       <button 
                         className={theme === "dark" ? "text-red-400 hover:text-red-300" : "text-red-600 hover:text-red-900"}
                         onClick={() => handleDelete(licencia.id)}

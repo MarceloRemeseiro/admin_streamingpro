@@ -12,9 +12,6 @@ export default function NuevaLicenciaPage() {
   
   const [formData, setFormData] = useState({
     tipo: '',
-    fechaInicio: '',
-    fechaFin: '',
-    activa: true,
   });
   
   const [loading, setLoading] = useState(false);
@@ -25,12 +22,10 @@ export default function NuevaLicenciaPage() {
   }, []);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
-    const checked = (e.target as HTMLInputElement).checked;
-    
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: value,
     });
   };
   
@@ -126,69 +121,8 @@ export default function NuevaLicenciaPage() {
                 >
                   <option value="">Seleccione un tipo</option>
                   <option value="basic">Basic</option>
-                 <option value="device">Device</option>
+                  <option value="device">Device</option>
                 </select>
-              </div>
-              
-              <div>
-                <label 
-                  htmlFor="fechaInicio" 
-                  className={`block text-sm font-medium ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
-                >
-                  Fecha de Inicio *
-                </label>
-                <input
-                  type="date"
-                  name="fechaInicio"
-                  id="fechaInicio"
-                  required
-                  value={formData.fechaInicio}
-                  onChange={handleChange}
-                  className={`mt-1 block w-full rounded-md shadow-sm p-2 ${
-                    theme === "dark" 
-                      ? "bg-gray-700 border-gray-600 text-white" 
-                      : "bg-white border-gray-300 text-gray-900"
-                  }`}
-                />
-              </div>
-              
-              <div>
-                <label 
-                  htmlFor="fechaFin" 
-                  className={`block text-sm font-medium ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
-                >
-                  Fecha de Fin *
-                </label>
-                <input
-                  type="date"
-                  name="fechaFin"
-                  id="fechaFin"
-                  required
-                  value={formData.fechaFin}
-                  onChange={handleChange}
-                  className={`mt-1 block w-full rounded-md shadow-sm p-2 ${
-                    theme === "dark" 
-                      ? "bg-gray-700 border-gray-600 text-white" 
-                      : "bg-white border-gray-300 text-gray-900"
-                  }`}
-                />
-              </div>
-              
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="activa"
-                  id="activa"
-                  checked={formData.activa}
-                  onChange={handleChange}
-                  className="h-4 w-4 rounded"
-                />
-                <label 
-                  htmlFor="activa" 
-                  className={`ml-2 block text-sm ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
-                >
-                  Licencia Activa
-                </label>
               </div>
               
               <div className="flex justify-end space-x-3 pt-4">

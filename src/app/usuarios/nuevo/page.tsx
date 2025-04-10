@@ -19,10 +19,13 @@ export default function NuevoUsuarioPage() {
     ciudad: '',
     subdominio: '',
     licenciaId: '',
+    fechaInicio: '',
+    fechaFin: '',
   });
   
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [generatedCode, setGeneratedCode] = useState<string | null>(null);
   
   useEffect(() => {
     setMounted(true);
@@ -68,12 +71,14 @@ export default function NuevoUsuarioPage() {
         throw new Error(data.error || 'Error al crear el usuario');
       }
       
-      // Redirigir a la lista de usuarios después de crear
-      router.push('/usuarios');
+      // Mostrar el código generado antes de redirigir
+      setGeneratedCode(data.codigo);
+      setTimeout(() => {
+        router.push('/usuarios');
+      }, 3000); // Redirigir después de 3 segundos
     } catch (err) {
       console.error('Error al crear usuario:', err);
       setError(err instanceof Error ? err.message : 'Error al crear usuario');
-    } finally {
       setLoading(false);
     }
   };
@@ -86,6 +91,33 @@ export default function NuevoUsuarioPage() {
           <h1 className="text-3xl font-bold">Nuevo Usuario</h1>
           <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden p-6">
             Cargando...
+          </div>
+        </div>
+      </LayoutWithSidebar>
+    );
+  }
+  
+  // Si se generó un código, mostrar mensaje de éxito
+  if (generatedCode) {
+    return (
+      <LayoutWithSidebar>
+        <div className="space-y-6">
+          <div className="flex justify-between items-center">
+            <h1 className={`text-3xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+              Usuario Creado
+            </h1>
+          </div>
+          
+          <div className={`p-6 rounded-md shadow-md text-center ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}>
+            <h2 className={`text-xl mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+              ¡Usuario creado exitosamente!
+            </h2>
+            <p className="mb-6">El código de acceso para este usuario es:</p>
+            <div className={`text-3xl font-bold font-mono mb-6 p-4 inline-block rounded ${theme === "dark" ? "bg-gray-700 text-blue-400" : "bg-gray-100 text-blue-600"}`}>
+              {generatedCode}
+            </div>
+            <p className="text-sm mb-6">Guarda este código para entregárselo al usuario.</p>
+            <p className="text-sm">Serás redirigido a la lista de usuarios en unos segundos...</p>
           </div>
         </div>
       </LayoutWithSidebar>
@@ -250,10 +282,54 @@ export default function NuevoUsuarioPage() {
                   <option value="">Seleccione una licencia</option>
                   {licencias.map((licencia) => (
                     <option key={licencia.id} value={licencia.id}>
-                      {licencia.tipo} - {new Date(licencia.fechaInicio).toLocaleDateString()} a {new Date(licencia.fechaFin).toLocaleDateString()}
+                      {licencia.tipo}
                     </option>
                   ))}
                 </select>
+              </div>
+              
+              <div>
+                <label 
+                  htmlFor="fechaInicio" 
+                  className={`block text-sm font-medium ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
+                >
+                  Fecha de inicio *
+                </label>
+                <input
+                  type="date"
+                  name="fechaInicio"
+                  id="fechaInicio"
+                  required
+                  value={formData.fechaInicio}
+                  onChange={handleChange}
+                  className={`mt-1 block w-full rounded-md shadow-sm p-2 ${
+                    theme === "dark" 
+                      ? "bg-gray-700 border-gray-600 text-white" 
+                      : "bg-white border-gray-300 text-gray-900"
+                  }`}
+                />
+              </div>
+              
+              <div>
+                <label 
+                  htmlFor="fechaFin" 
+                  className={`block text-sm font-medium ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
+                >
+                  Fecha de fin *
+                </label>
+                <input
+                  type="date"
+                  name="fechaFin"
+                  id="fechaFin"
+                  required
+                  value={formData.fechaFin}
+                  onChange={handleChange}
+                  className={`mt-1 block w-full rounded-md shadow-sm p-2 ${
+                    theme === "dark" 
+                      ? "bg-gray-700 border-gray-600 text-white" 
+                      : "bg-white border-gray-300 text-gray-900"
+                  }`}
+                />
               </div>
               
               <div className="flex justify-end space-x-3 pt-4">

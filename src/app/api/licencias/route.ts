@@ -21,19 +21,16 @@ export async function POST(request: Request) {
     const body = await request.json();
     
     // Validar campos requeridos
-    if (!body.tipo || !body.fechaInicio || !body.fechaFin) {
+    if (!body.tipo) {
       return NextResponse.json(
-        { error: 'Los campos tipo, fechaInicio y fechaFin son obligatorios' },
+        { error: 'El campo tipo es obligatorio' },
         { status: 400 }
       );
     }
     
-    // El servicio generará el código aleatorio automáticamente
+    // Crear licencia solo con el tipo
     const licencia = await licenciaService.create({
-      tipo: body.tipo,
-      fechaInicio: new Date(body.fechaInicio),
-      fechaFin: new Date(body.fechaFin),
-      activa: body.activa ?? true,
+      tipo: body.tipo
     });
     
     return NextResponse.json(licencia, { status: 201 });

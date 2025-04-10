@@ -37,9 +37,20 @@ export async function PUT(
     const body = await request.json();
     
     // Validar campos requeridos
-    if (!body.username || !body.email || !body.subdominio || !body.licenciaId) {
+    if (!body.username || !body.email || !body.subdominio || !body.licenciaId || !body.fechaInicio || !body.fechaFin) {
       return NextResponse.json(
-        { error: 'Los campos username, email, subdominio y licenciaId son obligatorios' },
+        { error: 'Los campos username, email, subdominio, licenciaId, fechaInicio y fechaFin son obligatorios' },
+        { status: 400 }
+      );
+    }
+    
+    // Validar que la fecha de fin sea posterior a la fecha de inicio
+    const fechaInicio = new Date(body.fechaInicio);
+    const fechaFin = new Date(body.fechaFin);
+    
+    if (fechaFin <= fechaInicio) {
+      return NextResponse.json(
+        { error: 'La fecha de fin debe ser posterior a la fecha de inicio' },
         { status: 400 }
       );
     }
@@ -66,6 +77,8 @@ export async function PUT(
       ciudad: body.ciudad || null,
       subdominio: body.subdominio,
       licenciaId: body.licenciaId,
+      fechaInicio,
+      fechaFin,
     });
     
     return NextResponse.json(usuario);
