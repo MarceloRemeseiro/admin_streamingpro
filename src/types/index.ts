@@ -11,6 +11,7 @@ export interface Usuario {
   fechaFin: Date;
   licenciaId: string;
   licencia?: Licencia;
+  devices?: Device[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -27,4 +28,15 @@ export interface Config {
   id: number;
   dark: boolean;
   userId: string;
+}
+
+export interface Device {
+  id: string;
+  nombre: string;
+  ipPublica: string;
+  registrado: boolean;
+  usuarioId: string | null;
+  usuario?: Usuario;
+  createdAt: Date;
+  updatedAt: Date;
 } 

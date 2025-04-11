@@ -21,6 +21,7 @@ export function Sidebar() {
     { name: "Dashboard", href: "/" },
     { name: "Usuarios", href: "/usuarios" },
     { name: "Licencias", href: "/licencias" },
+    { name: "Dispositivos", href: "/devices" },
     { name: "Estadísticas", href: "/estadisticas" },
     { name: "Configuración", href: "/configuracion" }
   ];

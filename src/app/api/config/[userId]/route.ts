@@ -2,15 +2,15 @@ import { prisma } from '@/lib/prisma';
 import { NextRequest, NextResponse } from 'next/server';
 
 interface Params {
-  params: {
+  params: Promise<{
     userId: string;
-  };
+  }>;
 }
 
 // GET /api/config/[userId] - Obtener configuración específica
 export async function GET(request: NextRequest, { params }: Params) {
   try {
-    const { userId } = params;
+    const { userId } = await params;
     
     if (!userId) {
       return NextResponse.json(
@@ -44,7 +44,7 @@ export async function GET(request: NextRequest, { params }: Params) {
 // PUT /api/config/[userId] - Actualizar configuración
 export async function PUT(request: NextRequest, { params }: Params) {
   try {
-    const { userId } = params;
+    const { userId } = await params;
     
     if (!userId) {
       return NextResponse.json(
@@ -98,7 +98,7 @@ export async function PUT(request: NextRequest, { params }: Params) {
 // DELETE /api/config/[userId] - Eliminar configuración
 export async function DELETE(request: NextRequest, { params }: Params) {
   try {
-    const { userId } = params;
+    const { userId } = await params;
     
     if (!userId) {
       return NextResponse.json(

@@ -129,12 +129,17 @@ export const usuarioService = {
     });
   },
 
-  async isVigente(id: string) {
-    const usuario = await this.getById(id);
+  isVigente: async (id: string): Promise<boolean> => {
+    const usuario = await prisma.usuario.findUnique({
+      where: { id },
+      include: { licencia: true }
+    });
 
-    if (!usuario || !usuario.activo) return false;
+    if (!usuario || !usuario.activo) {
+      return false;
+    }
 
-    const ahora = new Date();
-    return usuario.fechaInicio <= ahora && usuario.fechaFin >= ahora;
+    const currentDate = new Date();
+    return currentDate >= usuario.fechaInicio && currentDate <= usuario.fechaFin;
   }
 }; 

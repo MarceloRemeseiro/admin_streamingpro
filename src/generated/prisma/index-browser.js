@@ -146,6 +146,16 @@ exports.Prisma.ConfigScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.DeviceScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre',
+  ipPublica: 'ipPublica',
+  registrado: 'registrado',
+  usuarioId: 'usuarioId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -165,7 +175,8 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   Usuario: 'Usuario',
   Licencia: 'Licencia',
-  Config: 'Config'
+  Config: 'Config',
+  Device: 'Device'
 };
 
 /**

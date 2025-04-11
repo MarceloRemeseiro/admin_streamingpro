@@ -21,6 +21,7 @@ model Usuario {
   fechaFin    DateTime
   licenciaId  String
   licencia    Licencia @relation(fields: [licenciaId], references: [id])
+  devices     Device[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -37,4 +38,15 @@ model Config {
   id     String  @id @default(uuid())
   dark   Boolean @default(false)
   userId String  @unique
+}
+
+model Device {
+  id         String   @id
+  nombre     String
+  ipPublica  String
+  registrado Boolean  @default(false)
+  usuarioId  String?
+  usuario    Usuario? @relation(fields: [usuarioId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
