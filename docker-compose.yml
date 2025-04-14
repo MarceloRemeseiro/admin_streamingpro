@@ -12,8 +12,7 @@ services:
       - "1020:3000" # Mapear puerto 1020 del host al 3000 del contenedor
     environment:
       - DATABASE_URL=${DATABASE_URL} # Usar la variable de entorno para la conexión a la BD externa
-      - NEXTAUTH_URL=http://localhost:1020
-      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+
     networks:
       - streamingpro_network
 
