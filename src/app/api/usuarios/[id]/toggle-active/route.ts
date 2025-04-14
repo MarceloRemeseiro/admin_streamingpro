@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { usuarioService } from '../../../services/usuario.service';
 
-// PUT /api/usuarios/[id]/toggle-active - Activar/desactivar un usuario
-export async function PUT(
-  request: Request,
-  { params }: { params: { id: string } }
+// POST /api/usuarios/[id]/toggle-active - Activar/desactivar un usuario
+export async function POST(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params;

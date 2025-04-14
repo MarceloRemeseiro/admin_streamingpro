@@ -25,7 +25,7 @@ export interface Licencia {
 }
 
 export interface Config {
-  id: number;
+  id: string;
   dark: boolean;
   userId: string;
 }

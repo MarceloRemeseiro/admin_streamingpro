@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { usuarioService } from '../../services/usuario.service';
 
 // GET /api/usuarios/[id] - Obtener un usuario por ID
 export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params;
@@ -29,8 +29,8 @@ export async function GET(
 
 // PUT /api/usuarios/[id] - Actualizar un usuario
 export async function PUT(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params;
@@ -93,8 +93,8 @@ export async function PUT(
 
 // DELETE /api/usuarios/[id] - Eliminar un usuario
 export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params;

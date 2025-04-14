@@ -3,43 +3,35 @@
 import { LayoutWithSidebar } from "@/components/layout-with-sidebar";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation"; // <--- Importamos useParams
 import { Device } from "@/types";
 import * as React from 'react';
 
-interface PageParams {
-  id: string;
-}
-
-export default function EditDevicePage({ params }: { params: PageParams }) {
+export default function EditDevicePage() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
-  
+  const { id } = useParams();              // <--- aquí extraes el valor de [id]
+
   const [device, setDevice] = useState<Device | null>(null);
-  const [formData, setFormData] = useState({
-    nombre: '',
-  });
-  
+  const [formData, setFormData] = useState({ nombre: '' });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  
-  const { id } = React.use(params as unknown as Promise<PageParams>);
-  
+
   useEffect(() => {
     setMounted(true);
-    fetchDevice();
+    if (id) {
+      fetchDevice();
+    }
   }, [id]);
-  
+
   const fetchDevice = async () => {
     try {
       const response = await fetch(`/api/devices/${id}`);
       if (!response.ok) throw new Error('Error al obtener dispositivo');
       const data = await response.json();
       setDevice(data);
-      setFormData({
-        nombre: data.nombre,
-      });
+      setFormData({ nombre: data.nombre });
       setLoading(false);
     } catch (error) {
       console.error('Error:', error);
@@ -47,6 +39,7 @@ export default function EditDevicePage({ params }: { params: PageParams }) {
       setLoading(false);
     }
   };
+
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

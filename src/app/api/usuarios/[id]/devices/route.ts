@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { deviceService } from '../../../services/device.service';
 import { usuarioService } from '../../../services/usuario.service';
 
 // GET /api/usuarios/[id]/devices - Obtener dispositivos de un usuario
 export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params;

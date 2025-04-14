@@ -1,8 +1,8 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { usuarioService } from '../services/usuario.service';
 
 // GET /api/usuarios - Obtener todos los usuarios
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     const usuarios = await usuarioService.getAll();
     return NextResponse.json(usuarios);
@@ -16,7 +16,7 @@ export async function GET() {
 }
 
 // POST /api/usuarios - Crear un nuevo usuario
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     

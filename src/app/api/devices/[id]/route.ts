@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { deviceService } from '../../services/device.service';
 
 // GET /api/devices/[id] - Obtener un dispositivo por ID
 export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params;
@@ -29,8 +29,8 @@ export async function GET(
 
 // PUT /api/devices/[id] - Actualizar nombre del dispositivo
 export async function PUT(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params;
@@ -57,8 +57,8 @@ export async function PUT(
 
 // DELETE /api/devices/[id] - Eliminar un dispositivo
 export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params;

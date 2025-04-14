@@ -3,18 +3,15 @@
 import { LayoutWithSidebar } from "@/components/layout-with-sidebar";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { Licencia } from "@/types";
 import * as React from 'react';
 
-interface PageParams {
-  id: string;
-}
-
-export default function EditarLicenciaPage({ params }: { params: PageParams }) {
+export default function EditarLicenciaPage() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
+  const { id } = useParams();
   
   const [formData, setFormData] = useState({
     tipo: '',
@@ -23,11 +20,11 @@ export default function EditarLicenciaPage({ params }: { params: PageParams }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   
-  const { id } = React.use(params as unknown as Promise<PageParams>);
-  
   useEffect(() => {
     setMounted(true);
-    fetchLicencia();
+    if (id) {
+      fetchLicencia();
+    }
   }, [id]);
   
   const fetchLicencia = async () => {

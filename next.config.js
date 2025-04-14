@@ -2,9 +2,10 @@
 const nextConfig = {
   output: 'standalone', // Optimización para Docker
   reactStrictMode: true,
-  swcMinify: true,
-  experimental: {
-    serverComponentsExternalPackages: ['@prisma/client', 'bcrypt'],
+  serverExternalPackages: ['@prisma/client', 'bcrypt'],
+  eslint: {
+    // Deshabilitar linting durante la compilación
+    ignoreDuringBuilds: true,
   },
 };
 

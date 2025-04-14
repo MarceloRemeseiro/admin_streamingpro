@@ -1,8 +1,8 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { licenciaService } from '../services/licencia.service';
 
 // GET /api/licencias - Obtener todas las licencias
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     const licencias = await licenciaService.getAll();
     return NextResponse.json(licencias);
@@ -16,7 +16,7 @@ export async function GET() {
 }
 
 // POST /api/licencias - Crear una nueva licencia
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     

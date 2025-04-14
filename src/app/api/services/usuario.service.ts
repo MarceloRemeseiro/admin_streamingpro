@@ -12,14 +12,21 @@ function generateRandomCode(): string {
 }
 
 export const usuarioService = {
-  async create(data: Omit<Usuario, 'id' | 'createdAt' | 'updatedAt' | 'licencia' | 'codigo' | 'activo'>) {
+  async create(data: Omit<Usuario, 'id' | 'createdAt' | 'updatedAt' | 'licencia' | 'codigo' | 'activo' | 'devices'>) {
     const codigo = generateRandomCode();
+    
+    const { devices, ...dataWithoutDevices } = data as any;
     
     return prisma.usuario.create({
       data: {
-        ...data,
+        ...dataWithoutDevices,
         codigo,
         activo: true,
+        ...(devices ? {
+          devices: {
+            connect: devices.map((device: { id: string }) => ({ id: device.id }))
+          }
+        } : {})
       },
       include: {
         licencia: true,
@@ -74,10 +81,19 @@ export const usuarioService = {
     });
   },
 
-  async update(id: string, data: Partial<Omit<Usuario, 'id' | 'createdAt' | 'updatedAt' | 'licencia' | 'codigo'>>) {
+  async update(id: string, data: Partial<Omit<Usuario, 'id' | 'createdAt' | 'updatedAt' | 'licencia' | 'codigo' | 'devices'>>) {
+    const { devices, ...dataWithoutDevices } = data as any;
+    
     return prisma.usuario.update({
       where: { id },
-      data,
+      data: {
+        ...dataWithoutDevices,
+        ...(devices ? {
+          devices: {
+            set: devices.map((device: { id: string }) => ({ id: device.id }))
+          }
+        } : {})
+      },
       include: {
         licencia: true,
       },
