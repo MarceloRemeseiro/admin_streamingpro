@@ -1,3 +1,66 @@
+# Dashboard StreamingPro
+
+## Despliegue con Docker
+
+### Requisitos previos
+- Docker y Docker Compose instalados
+- Base de datos PostgreSQL externa
+
+### Pasos para el despliegue
+
+1. Clonar este repositorio
+```bash
+git clone <url-del-repositorio>
+cd dashboard_streamingpro
+```
+
+2. Crear un archivo .env con las variables de entorno necesarias
+```bash
+cp .env.example .env
+```
+
+3. Editar el archivo .env con tus datos de conexión a la base de datos y otras configuraciones
+```bash
+nano .env
+```
+
+4. Construir y levantar los contenedores
+```bash
+docker-compose up -d
+```
+
+5. Acceder a la aplicación
+```
+http://tu-servidor:1020
+```
+
+### Comandos útiles
+
+- Ver logs de la aplicación
+```bash
+docker-compose logs -f app
+```
+
+- Reiniciar la aplicación
+```bash
+docker-compose restart app
+```
+
+- Detener los contenedores
+```bash
+docker-compose down
+```
+
+## Actualización
+
+Para actualizar la aplicación:
+
+```bash
+git pull
+docker-compose build app
+docker-compose up -d
+```
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
