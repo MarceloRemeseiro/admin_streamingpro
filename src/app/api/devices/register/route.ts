@@ -42,10 +42,14 @@ export async function POST(request: NextRequest) {
     // Si el dispositivo está asignado a un usuario, incluir información de streaming
     if (device.registrado && device.usuario) {
       respuesta.subdominio = device.usuario.subdominio;
-      // URL de desarrollo
-      respuesta.streamingUrl = `http://192.168.1.51:3001`;
-      // URL de producción (comentada)
-      // respuesta.streamingUrl = `http://${device.usuario.subdominio}.streamingpro.es:3000`;
+      
+      // Construir URL basada en el subdominio (para desarrollo o producción)
+      const isProduction = process.env.NODE_ENV === 'production';
+      if (isProduction) {
+        respuesta.streamingUrl = `http://${device.usuario.subdominio}.streamingpro.es:3000`;
+      } else {
+        respuesta.streamingUrl = `http://192.168.1.51:3001`;
+      }
     } else {
       respuesta.mensaje = 'Dispositivo no asignado. Debe asignarse desde el panel de administración.';
     }

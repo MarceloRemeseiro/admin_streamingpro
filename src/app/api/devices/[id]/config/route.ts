@@ -35,10 +35,14 @@ export async function GET(
     }
     
     // Construir la URL basada en el subdominio del usuario
-    // URL de desarrollo
-    const configUrl = `http://192.168.1.51:3001`;
-    // URL de producción (comentada)
-    // const configUrl = `http://${subdominio}.streamingpro.es:3000`;
+    const isProduction = process.env.NODE_ENV === 'production';
+    let configUrl;
+    
+    if (isProduction) {
+      configUrl = `http://${subdominio}.streamingpro.es:3000`;
+    } else {
+      configUrl = `http://192.168.1.51:3001`;
+    }
     
     return NextResponse.json({
       config_url: configUrl,
