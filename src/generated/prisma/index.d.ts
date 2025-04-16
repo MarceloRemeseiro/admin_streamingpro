@@ -33,6 +33,11 @@ export type Config = $Result.DefaultSelection<Prisma.$ConfigPayload>
  * 
  */
 export type Device = $Result.DefaultSelection<Prisma.$DevicePayload>
+/**
+ * Model Dispositivo
+ * 
+ */
+export type Dispositivo = $Result.DefaultSelection<Prisma.$DispositivoPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -198,6 +203,16 @@ export class PrismaClient<
     * ```
     */
   get device(): Prisma.DeviceDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.dispositivo`: Exposes CRUD operations for the **Dispositivo** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Dispositivos
+    * const dispositivos = await prisma.dispositivo.findMany()
+    * ```
+    */
+  get dispositivo(): Prisma.DispositivoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -641,7 +656,8 @@ export namespace Prisma {
     Usuario: 'Usuario',
     Licencia: 'Licencia',
     Config: 'Config',
-    Device: 'Device'
+    Device: 'Device',
+    Dispositivo: 'Dispositivo'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "usuario" | "licencia" | "config" | "device"
+      modelProps: "usuario" | "licencia" | "config" | "device" | "dispositivo"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -960,6 +976,80 @@ export namespace Prisma {
           }
         }
       }
+      Dispositivo: {
+        payload: Prisma.$DispositivoPayload<ExtArgs>
+        fields: Prisma.DispositivoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DispositivoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DispositivoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>
+          }
+          findFirst: {
+            args: Prisma.DispositivoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DispositivoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>
+          }
+          findMany: {
+            args: Prisma.DispositivoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>[]
+          }
+          create: {
+            args: Prisma.DispositivoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>
+          }
+          createMany: {
+            args: Prisma.DispositivoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DispositivoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>[]
+          }
+          delete: {
+            args: Prisma.DispositivoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>
+          }
+          update: {
+            args: Prisma.DispositivoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>
+          }
+          deleteMany: {
+            args: Prisma.DispositivoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DispositivoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DispositivoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>[]
+          }
+          upsert: {
+            args: Prisma.DispositivoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>
+          }
+          aggregate: {
+            args: Prisma.DispositivoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDispositivo>
+          }
+          groupBy: {
+            args: Prisma.DispositivoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DispositivoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DispositivoCountArgs<ExtArgs>
+            result: $Utils.Optional<DispositivoCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1048,6 +1138,7 @@ export namespace Prisma {
     licencia?: LicenciaOmit
     config?: ConfigOmit
     device?: DeviceOmit
+    dispositivo?: DispositivoOmit
   }
 
   /* Types for Logging */
@@ -5525,6 +5616,1040 @@ export namespace Prisma {
 
 
   /**
+   * Model Dispositivo
+   */
+
+  export type AggregateDispositivo = {
+    _count: DispositivoCountAggregateOutputType | null
+    _min: DispositivoMinAggregateOutputType | null
+    _max: DispositivoMaxAggregateOutputType | null
+  }
+
+  export type DispositivoMinAggregateOutputType = {
+    id: string | null
+    dispositivoId: string | null
+    nombre: string | null
+    inputSrt: string | null
+    activo: boolean | null
+    ultimaConexion: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DispositivoMaxAggregateOutputType = {
+    id: string | null
+    dispositivoId: string | null
+    nombre: string | null
+    inputSrt: string | null
+    activo: boolean | null
+    ultimaConexion: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DispositivoCountAggregateOutputType = {
+    id: number
+    dispositivoId: number
+    nombre: number
+    inputSrt: number
+    activo: number
+    ultimaConexion: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type DispositivoMinAggregateInputType = {
+    id?: true
+    dispositivoId?: true
+    nombre?: true
+    inputSrt?: true
+    activo?: true
+    ultimaConexion?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DispositivoMaxAggregateInputType = {
+    id?: true
+    dispositivoId?: true
+    nombre?: true
+    inputSrt?: true
+    activo?: true
+    ultimaConexion?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DispositivoCountAggregateInputType = {
+    id?: true
+    dispositivoId?: true
+    nombre?: true
+    inputSrt?: true
+    activo?: true
+    ultimaConexion?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type DispositivoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Dispositivo to aggregate.
+     */
+    where?: DispositivoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dispositivos to fetch.
+     */
+    orderBy?: DispositivoOrderByWithRelationInput | DispositivoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DispositivoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dispositivos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dispositivos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Dispositivos
+    **/
+    _count?: true | DispositivoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DispositivoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DispositivoMaxAggregateInputType
+  }
+
+  export type GetDispositivoAggregateType<T extends DispositivoAggregateArgs> = {
+        [P in keyof T & keyof AggregateDispositivo]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDispositivo[P]>
+      : GetScalarType<T[P], AggregateDispositivo[P]>
+  }
+
+
+
+
+  export type DispositivoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DispositivoWhereInput
+    orderBy?: DispositivoOrderByWithAggregationInput | DispositivoOrderByWithAggregationInput[]
+    by: DispositivoScalarFieldEnum[] | DispositivoScalarFieldEnum
+    having?: DispositivoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DispositivoCountAggregateInputType | true
+    _min?: DispositivoMinAggregateInputType
+    _max?: DispositivoMaxAggregateInputType
+  }
+
+  export type DispositivoGroupByOutputType = {
+    id: string
+    dispositivoId: string
+    nombre: string
+    inputSrt: string
+    activo: boolean
+    ultimaConexion: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: DispositivoCountAggregateOutputType | null
+    _min: DispositivoMinAggregateOutputType | null
+    _max: DispositivoMaxAggregateOutputType | null
+  }
+
+  type GetDispositivoGroupByPayload<T extends DispositivoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DispositivoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DispositivoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DispositivoGroupByOutputType[P]>
+            : GetScalarType<T[P], DispositivoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DispositivoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    dispositivoId?: boolean
+    nombre?: boolean
+    inputSrt?: boolean
+    activo?: boolean
+    ultimaConexion?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["dispositivo"]>
+
+  export type DispositivoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    dispositivoId?: boolean
+    nombre?: boolean
+    inputSrt?: boolean
+    activo?: boolean
+    ultimaConexion?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["dispositivo"]>
+
+  export type DispositivoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    dispositivoId?: boolean
+    nombre?: boolean
+    inputSrt?: boolean
+    activo?: boolean
+    ultimaConexion?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["dispositivo"]>
+
+  export type DispositivoSelectScalar = {
+    id?: boolean
+    dispositivoId?: boolean
+    nombre?: boolean
+    inputSrt?: boolean
+    activo?: boolean
+    ultimaConexion?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type DispositivoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "dispositivoId" | "nombre" | "inputSrt" | "activo" | "ultimaConexion" | "createdAt" | "updatedAt", ExtArgs["result"]["dispositivo"]>
+
+  export type $DispositivoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Dispositivo"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      dispositivoId: string
+      nombre: string
+      inputSrt: string
+      activo: boolean
+      ultimaConexion: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["dispositivo"]>
+    composites: {}
+  }
+
+  type DispositivoGetPayload<S extends boolean | null | undefined | DispositivoDefaultArgs> = $Result.GetResult<Prisma.$DispositivoPayload, S>
+
+  type DispositivoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DispositivoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DispositivoCountAggregateInputType | true
+    }
+
+  export interface DispositivoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Dispositivo'], meta: { name: 'Dispositivo' } }
+    /**
+     * Find zero or one Dispositivo that matches the filter.
+     * @param {DispositivoFindUniqueArgs} args - Arguments to find a Dispositivo
+     * @example
+     * // Get one Dispositivo
+     * const dispositivo = await prisma.dispositivo.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DispositivoFindUniqueArgs>(args: SelectSubset<T, DispositivoFindUniqueArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Dispositivo that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DispositivoFindUniqueOrThrowArgs} args - Arguments to find a Dispositivo
+     * @example
+     * // Get one Dispositivo
+     * const dispositivo = await prisma.dispositivo.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DispositivoFindUniqueOrThrowArgs>(args: SelectSubset<T, DispositivoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Dispositivo that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DispositivoFindFirstArgs} args - Arguments to find a Dispositivo
+     * @example
+     * // Get one Dispositivo
+     * const dispositivo = await prisma.dispositivo.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DispositivoFindFirstArgs>(args?: SelectSubset<T, DispositivoFindFirstArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Dispositivo that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DispositivoFindFirstOrThrowArgs} args - Arguments to find a Dispositivo
+     * @example
+     * // Get one Dispositivo
+     * const dispositivo = await prisma.dispositivo.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DispositivoFindFirstOrThrowArgs>(args?: SelectSubset<T, DispositivoFindFirstOrThrowArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Dispositivos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DispositivoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Dispositivos
+     * const dispositivos = await prisma.dispositivo.findMany()
+     * 
+     * // Get first 10 Dispositivos
+     * const dispositivos = await prisma.dispositivo.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const dispositivoWithIdOnly = await prisma.dispositivo.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DispositivoFindManyArgs>(args?: SelectSubset<T, DispositivoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Dispositivo.
+     * @param {DispositivoCreateArgs} args - Arguments to create a Dispositivo.
+     * @example
+     * // Create one Dispositivo
+     * const Dispositivo = await prisma.dispositivo.create({
+     *   data: {
+     *     // ... data to create a Dispositivo
+     *   }
+     * })
+     * 
+     */
+    create<T extends DispositivoCreateArgs>(args: SelectSubset<T, DispositivoCreateArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Dispositivos.
+     * @param {DispositivoCreateManyArgs} args - Arguments to create many Dispositivos.
+     * @example
+     * // Create many Dispositivos
+     * const dispositivo = await prisma.dispositivo.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DispositivoCreateManyArgs>(args?: SelectSubset<T, DispositivoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Dispositivos and returns the data saved in the database.
+     * @param {DispositivoCreateManyAndReturnArgs} args - Arguments to create many Dispositivos.
+     * @example
+     * // Create many Dispositivos
+     * const dispositivo = await prisma.dispositivo.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Dispositivos and only return the `id`
+     * const dispositivoWithIdOnly = await prisma.dispositivo.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DispositivoCreateManyAndReturnArgs>(args?: SelectSubset<T, DispositivoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Dispositivo.
+     * @param {DispositivoDeleteArgs} args - Arguments to delete one Dispositivo.
+     * @example
+     * // Delete one Dispositivo
+     * const Dispositivo = await prisma.dispositivo.delete({
+     *   where: {
+     *     // ... filter to delete one Dispositivo
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DispositivoDeleteArgs>(args: SelectSubset<T, DispositivoDeleteArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Dispositivo.
+     * @param {DispositivoUpdateArgs} args - Arguments to update one Dispositivo.
+     * @example
+     * // Update one Dispositivo
+     * const dispositivo = await prisma.dispositivo.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DispositivoUpdateArgs>(args: SelectSubset<T, DispositivoUpdateArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Dispositivos.
+     * @param {DispositivoDeleteManyArgs} args - Arguments to filter Dispositivos to delete.
+     * @example
+     * // Delete a few Dispositivos
+     * const { count } = await prisma.dispositivo.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DispositivoDeleteManyArgs>(args?: SelectSubset<T, DispositivoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Dispositivos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DispositivoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Dispositivos
+     * const dispositivo = await prisma.dispositivo.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DispositivoUpdateManyArgs>(args: SelectSubset<T, DispositivoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Dispositivos and returns the data updated in the database.
+     * @param {DispositivoUpdateManyAndReturnArgs} args - Arguments to update many Dispositivos.
+     * @example
+     * // Update many Dispositivos
+     * const dispositivo = await prisma.dispositivo.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Dispositivos and only return the `id`
+     * const dispositivoWithIdOnly = await prisma.dispositivo.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DispositivoUpdateManyAndReturnArgs>(args: SelectSubset<T, DispositivoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Dispositivo.
+     * @param {DispositivoUpsertArgs} args - Arguments to update or create a Dispositivo.
+     * @example
+     * // Update or create a Dispositivo
+     * const dispositivo = await prisma.dispositivo.upsert({
+     *   create: {
+     *     // ... data to create a Dispositivo
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Dispositivo we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DispositivoUpsertArgs>(args: SelectSubset<T, DispositivoUpsertArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Dispositivos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DispositivoCountArgs} args - Arguments to filter Dispositivos to count.
+     * @example
+     * // Count the number of Dispositivos
+     * const count = await prisma.dispositivo.count({
+     *   where: {
+     *     // ... the filter for the Dispositivos we want to count
+     *   }
+     * })
+    **/
+    count<T extends DispositivoCountArgs>(
+      args?: Subset<T, DispositivoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DispositivoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Dispositivo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DispositivoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DispositivoAggregateArgs>(args: Subset<T, DispositivoAggregateArgs>): Prisma.PrismaPromise<GetDispositivoAggregateType<T>>
+
+    /**
+     * Group by Dispositivo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DispositivoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DispositivoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DispositivoGroupByArgs['orderBy'] }
+        : { orderBy?: DispositivoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DispositivoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDispositivoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Dispositivo model
+   */
+  readonly fields: DispositivoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Dispositivo.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DispositivoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Dispositivo model
+   */
+  interface DispositivoFieldRefs {
+    readonly id: FieldRef<"Dispositivo", 'String'>
+    readonly dispositivoId: FieldRef<"Dispositivo", 'String'>
+    readonly nombre: FieldRef<"Dispositivo", 'String'>
+    readonly inputSrt: FieldRef<"Dispositivo", 'String'>
+    readonly activo: FieldRef<"Dispositivo", 'Boolean'>
+    readonly ultimaConexion: FieldRef<"Dispositivo", 'DateTime'>
+    readonly createdAt: FieldRef<"Dispositivo", 'DateTime'>
+    readonly updatedAt: FieldRef<"Dispositivo", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Dispositivo findUnique
+   */
+  export type DispositivoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Filter, which Dispositivo to fetch.
+     */
+    where: DispositivoWhereUniqueInput
+  }
+
+  /**
+   * Dispositivo findUniqueOrThrow
+   */
+  export type DispositivoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Filter, which Dispositivo to fetch.
+     */
+    where: DispositivoWhereUniqueInput
+  }
+
+  /**
+   * Dispositivo findFirst
+   */
+  export type DispositivoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Filter, which Dispositivo to fetch.
+     */
+    where?: DispositivoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dispositivos to fetch.
+     */
+    orderBy?: DispositivoOrderByWithRelationInput | DispositivoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Dispositivos.
+     */
+    cursor?: DispositivoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dispositivos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dispositivos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Dispositivos.
+     */
+    distinct?: DispositivoScalarFieldEnum | DispositivoScalarFieldEnum[]
+  }
+
+  /**
+   * Dispositivo findFirstOrThrow
+   */
+  export type DispositivoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Filter, which Dispositivo to fetch.
+     */
+    where?: DispositivoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dispositivos to fetch.
+     */
+    orderBy?: DispositivoOrderByWithRelationInput | DispositivoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Dispositivos.
+     */
+    cursor?: DispositivoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dispositivos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dispositivos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Dispositivos.
+     */
+    distinct?: DispositivoScalarFieldEnum | DispositivoScalarFieldEnum[]
+  }
+
+  /**
+   * Dispositivo findMany
+   */
+  export type DispositivoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Filter, which Dispositivos to fetch.
+     */
+    where?: DispositivoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dispositivos to fetch.
+     */
+    orderBy?: DispositivoOrderByWithRelationInput | DispositivoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Dispositivos.
+     */
+    cursor?: DispositivoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dispositivos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dispositivos.
+     */
+    skip?: number
+    distinct?: DispositivoScalarFieldEnum | DispositivoScalarFieldEnum[]
+  }
+
+  /**
+   * Dispositivo create
+   */
+  export type DispositivoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Dispositivo.
+     */
+    data: XOR<DispositivoCreateInput, DispositivoUncheckedCreateInput>
+  }
+
+  /**
+   * Dispositivo createMany
+   */
+  export type DispositivoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Dispositivos.
+     */
+    data: DispositivoCreateManyInput | DispositivoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Dispositivo createManyAndReturn
+   */
+  export type DispositivoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * The data used to create many Dispositivos.
+     */
+    data: DispositivoCreateManyInput | DispositivoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Dispositivo update
+   */
+  export type DispositivoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Dispositivo.
+     */
+    data: XOR<DispositivoUpdateInput, DispositivoUncheckedUpdateInput>
+    /**
+     * Choose, which Dispositivo to update.
+     */
+    where: DispositivoWhereUniqueInput
+  }
+
+  /**
+   * Dispositivo updateMany
+   */
+  export type DispositivoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Dispositivos.
+     */
+    data: XOR<DispositivoUpdateManyMutationInput, DispositivoUncheckedUpdateManyInput>
+    /**
+     * Filter which Dispositivos to update
+     */
+    where?: DispositivoWhereInput
+    /**
+     * Limit how many Dispositivos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Dispositivo updateManyAndReturn
+   */
+  export type DispositivoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * The data used to update Dispositivos.
+     */
+    data: XOR<DispositivoUpdateManyMutationInput, DispositivoUncheckedUpdateManyInput>
+    /**
+     * Filter which Dispositivos to update
+     */
+    where?: DispositivoWhereInput
+    /**
+     * Limit how many Dispositivos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Dispositivo upsert
+   */
+  export type DispositivoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Dispositivo to update in case it exists.
+     */
+    where: DispositivoWhereUniqueInput
+    /**
+     * In case the Dispositivo found by the `where` argument doesn't exist, create a new Dispositivo with this data.
+     */
+    create: XOR<DispositivoCreateInput, DispositivoUncheckedCreateInput>
+    /**
+     * In case the Dispositivo was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DispositivoUpdateInput, DispositivoUncheckedUpdateInput>
+  }
+
+  /**
+   * Dispositivo delete
+   */
+  export type DispositivoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Filter which Dispositivo to delete.
+     */
+    where: DispositivoWhereUniqueInput
+  }
+
+  /**
+   * Dispositivo deleteMany
+   */
+  export type DispositivoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Dispositivos to delete
+     */
+    where?: DispositivoWhereInput
+    /**
+     * Limit how many Dispositivos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Dispositivo without action
+   */
+  export type DispositivoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5587,6 +6712,20 @@ export namespace Prisma {
   };
 
   export type DeviceScalarFieldEnum = (typeof DeviceScalarFieldEnum)[keyof typeof DeviceScalarFieldEnum]
+
+
+  export const DispositivoScalarFieldEnum: {
+    id: 'id',
+    dispositivoId: 'dispositivoId',
+    nombre: 'nombre',
+    inputSrt: 'inputSrt',
+    activo: 'activo',
+    ultimaConexion: 'ultimaConexion',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type DispositivoScalarFieldEnum = (typeof DispositivoScalarFieldEnum)[keyof typeof DispositivoScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5925,6 +7064,73 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Device"> | Date | string
   }
 
+  export type DispositivoWhereInput = {
+    AND?: DispositivoWhereInput | DispositivoWhereInput[]
+    OR?: DispositivoWhereInput[]
+    NOT?: DispositivoWhereInput | DispositivoWhereInput[]
+    id?: StringFilter<"Dispositivo"> | string
+    dispositivoId?: StringFilter<"Dispositivo"> | string
+    nombre?: StringFilter<"Dispositivo"> | string
+    inputSrt?: StringFilter<"Dispositivo"> | string
+    activo?: BoolFilter<"Dispositivo"> | boolean
+    ultimaConexion?: DateTimeNullableFilter<"Dispositivo"> | Date | string | null
+    createdAt?: DateTimeFilter<"Dispositivo"> | Date | string
+    updatedAt?: DateTimeFilter<"Dispositivo"> | Date | string
+  }
+
+  export type DispositivoOrderByWithRelationInput = {
+    id?: SortOrder
+    dispositivoId?: SortOrder
+    nombre?: SortOrder
+    inputSrt?: SortOrder
+    activo?: SortOrder
+    ultimaConexion?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DispositivoWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    dispositivoId?: string
+    AND?: DispositivoWhereInput | DispositivoWhereInput[]
+    OR?: DispositivoWhereInput[]
+    NOT?: DispositivoWhereInput | DispositivoWhereInput[]
+    nombre?: StringFilter<"Dispositivo"> | string
+    inputSrt?: StringFilter<"Dispositivo"> | string
+    activo?: BoolFilter<"Dispositivo"> | boolean
+    ultimaConexion?: DateTimeNullableFilter<"Dispositivo"> | Date | string | null
+    createdAt?: DateTimeFilter<"Dispositivo"> | Date | string
+    updatedAt?: DateTimeFilter<"Dispositivo"> | Date | string
+  }, "id" | "dispositivoId">
+
+  export type DispositivoOrderByWithAggregationInput = {
+    id?: SortOrder
+    dispositivoId?: SortOrder
+    nombre?: SortOrder
+    inputSrt?: SortOrder
+    activo?: SortOrder
+    ultimaConexion?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: DispositivoCountOrderByAggregateInput
+    _max?: DispositivoMaxOrderByAggregateInput
+    _min?: DispositivoMinOrderByAggregateInput
+  }
+
+  export type DispositivoScalarWhereWithAggregatesInput = {
+    AND?: DispositivoScalarWhereWithAggregatesInput | DispositivoScalarWhereWithAggregatesInput[]
+    OR?: DispositivoScalarWhereWithAggregatesInput[]
+    NOT?: DispositivoScalarWhereWithAggregatesInput | DispositivoScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Dispositivo"> | string
+    dispositivoId?: StringWithAggregatesFilter<"Dispositivo"> | string
+    nombre?: StringWithAggregatesFilter<"Dispositivo"> | string
+    inputSrt?: StringWithAggregatesFilter<"Dispositivo"> | string
+    activo?: BoolWithAggregatesFilter<"Dispositivo"> | boolean
+    ultimaConexion?: DateTimeNullableWithAggregatesFilter<"Dispositivo"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Dispositivo"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Dispositivo"> | Date | string
+  }
+
   export type UsuarioCreateInput = {
     id?: string
     username: string
@@ -6204,6 +7410,83 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type DispositivoCreateInput = {
+    id?: string
+    dispositivoId: string
+    nombre: string
+    inputSrt: string
+    activo?: boolean
+    ultimaConexion?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DispositivoUncheckedCreateInput = {
+    id?: string
+    dispositivoId: string
+    nombre: string
+    inputSrt: string
+    activo?: boolean
+    ultimaConexion?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DispositivoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dispositivoId?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
+    inputSrt?: StringFieldUpdateOperationsInput | string
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    ultimaConexion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DispositivoUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dispositivoId?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
+    inputSrt?: StringFieldUpdateOperationsInput | string
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    ultimaConexion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DispositivoCreateManyInput = {
+    id?: string
+    dispositivoId: string
+    nombre: string
+    inputSrt: string
+    activo?: boolean
+    ultimaConexion?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DispositivoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dispositivoId?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
+    inputSrt?: StringFieldUpdateOperationsInput | string
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    ultimaConexion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DispositivoUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dispositivoId?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
+    inputSrt?: StringFieldUpdateOperationsInput | string
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    ultimaConexion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -6460,6 +7743,64 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type DispositivoCountOrderByAggregateInput = {
+    id?: SortOrder
+    dispositivoId?: SortOrder
+    nombre?: SortOrder
+    inputSrt?: SortOrder
+    activo?: SortOrder
+    ultimaConexion?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DispositivoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    dispositivoId?: SortOrder
+    nombre?: SortOrder
+    inputSrt?: SortOrder
+    activo?: SortOrder
+    ultimaConexion?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DispositivoMinOrderByAggregateInput = {
+    id?: SortOrder
+    dispositivoId?: SortOrder
+    nombre?: SortOrder
+    inputSrt?: SortOrder
+    activo?: SortOrder
+    ultimaConexion?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type LicenciaCreateNestedOneWithoutUsuariosInput = {
     create?: XOR<LicenciaCreateWithoutUsuariosInput, LicenciaUncheckedCreateWithoutUsuariosInput>
     connectOrCreate?: LicenciaCreateOrConnectWithoutUsuariosInput
@@ -6590,6 +7931,10 @@ export namespace Prisma {
     update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutDevicesInput, UsuarioUpdateWithoutDevicesInput>, UsuarioUncheckedUpdateWithoutDevicesInput>
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -6710,6 +8055,31 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type LicenciaCreateWithoutUsuariosInput = {

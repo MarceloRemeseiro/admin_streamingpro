@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
       // Construir URL basada en el subdominio (para desarrollo o producción)
       const isProduction = process.env.NODE_ENV === 'production';
       if (isProduction) {
-        respuesta.streamingUrl = `http://${device.usuario.subdominio}.streamingpro.es:3000`;
+        respuesta.streamingUrl = `http://${device.usuario.subdominio}.streamingpro.es/api/devices/register`;
       } else {
         respuesta.streamingUrl = `http://192.168.1.51:3001`;
       }

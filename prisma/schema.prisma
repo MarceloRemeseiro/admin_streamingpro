@@ -50,3 +50,14 @@ model Device {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model Dispositivo {
+  id              String    @id @default(uuid())
+  dispositivoId   String    @unique // ID enviado por el dispositivo Raspberry
+  nombre          String    // Nombre asignado por el usuario
+  inputSrt        String    // URL del input SRT que reproducirá
+  activo          Boolean   @default(true)
+  ultimaConexion  DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}

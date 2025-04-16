@@ -39,7 +39,7 @@ export async function GET(
     let configUrl;
     
     if (isProduction) {
-      configUrl = `http://${subdominio}.streamingpro.es:3000`;
+      configUrl = `http://${subdominio}.streamingpro.es/api/devices/register`;
     } else {
       configUrl = `http://192.168.1.51:3001`;
     }
