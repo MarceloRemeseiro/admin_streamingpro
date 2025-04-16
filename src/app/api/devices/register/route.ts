@@ -46,12 +46,15 @@ export async function POST(request: NextRequest) {
       // Construir URL basada en el subdominio (para desarrollo o producción)
       const isProduction = process.env.NODE_ENV === 'production';
       if (isProduction) {
-        respuesta.streamingUrl = `http://${device.usuario.subdominio}.streamingpro.es/api/devices/register`;
+        respuesta.streamingUrl = `https://${device.usuario.subdominio}.streamingpro.es/api/devices/register`;
+        console.log(`[PRODUCCIÓN] Dispositivo ${id} asignado a URL: ${respuesta.streamingUrl}`);
       } else {
         respuesta.streamingUrl = `http://192.168.1.51:3001`;
+        console.log(`[DESARROLLO] Dispositivo ${id} asignado a URL: ${respuesta.streamingUrl}`);
       }
     } else {
       respuesta.mensaje = 'Dispositivo no asignado. Debe asignarse desde el panel de administración.';
+      console.log(`Dispositivo ${id} no asignado a ningún usuario`);
     }
     
     return NextResponse.json(respuesta);

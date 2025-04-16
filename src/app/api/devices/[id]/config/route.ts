@@ -39,10 +39,21 @@ export async function GET(
     let configUrl;
     
     if (isProduction) {
-      configUrl = `http://${subdominio}.streamingpro.es/api/devices/register`;
+      configUrl = `https://${subdominio}.streamingpro.es/api/devices/register`;
+      console.log(`[PRODUCCIÓN] Configuración para dispositivo ${id}: ${configUrl}`);
     } else {
       configUrl = `http://192.168.1.51:3001`;
+      console.log(`[DESARROLLO] Configuración para dispositivo ${id}: ${configUrl}`);
     }
+    
+    console.log('Entorno:', process.env.NODE_ENV || 'no definido');
+    console.log('Configuración completa de dispositivo:', {
+      config_url: configUrl,
+      device_id: id,
+      subdominio,
+      registrado: device.registrado,
+      usuarioId: device.usuarioId
+    });
     
     return NextResponse.json({
       config_url: configUrl,
